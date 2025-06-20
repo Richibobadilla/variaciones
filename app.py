@@ -7,10 +7,16 @@ excel_url = "https://raw.githubusercontent.com/Richibobadilla/variaciones/main/T
 st.set_page_config(page_title="Análisis de Variaciones", layout="centered")
 st.title("📊 Análisis de Variaciones por Mes")
 
+# 🧠 Función con caché controlado (refresca cada 60 segundos como máximo)
+@st.cache_data(ttl=60)
+def cargar_datos():
+    real = pd.read_excel(excel_url, sheet_name='REAL')
+    budget = pd.read_excel(excel_url, sheet_name='BUDGET')
+    return real, budget
+
 try:
-    # Leer las hojas REAL y BUDGET desde la URL
-    real_df = pd.read_excel(excel_url, sheet_name='REAL')
-    budget_df = pd.read_excel(excel_url, sheet_name='BUDGET')
+    # Usar la función con caché
+    real_df, budget_df = cargar_datos()
 
     # Agrupar datos por MES y GASTO
     real_grouped = real_df.groupby(['MES', 'GASTO'])['IMPORTE'].sum().reset_index()
