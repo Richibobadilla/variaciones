@@ -9,17 +9,17 @@ st.set_page_config(page_title="Análisis de Variaciones", layout="wide")
 # 🎨 Estilos personalizados
 st.markdown('''
     <style>
-    .stApp {{
-        background: linear-gradient(to bottom, #00acc1, #ffffff);!important;
+    .stApp {
+        background: linear-gradient(to bottom, #00acc1, #ffffff);
         font-family: 'Segoe UI', sans-serif;
-    }}
-    h1, h2, h3 {{
+    }
+    h1, h2, h3 {
         color: #0d47a1;
-    }}
-    .block-container {{
+    }
+    .block-container {
         padding-top: 2rem;
         padding-bottom: 2rem;
-    }}
+    }
     </style>
 ''', unsafe_allow_html=True)
 
